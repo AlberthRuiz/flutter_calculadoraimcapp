@@ -6,40 +6,52 @@ class Calculadora {
   double _resultado = 0.0;
   List<Imc> _listIMC = [
     Imc(
-        descripcion: "Bajo",
+        descripcion: "severethinness",
         recomendaciones:
-            "IMC es menos de 18.5, se encuentra dentro del rango de peso insuficiente",
-        valorMinimo: 0,
-        valorMaximo: 18.5),
+            "IMC es menos de 16, se encuentra dentro del rango de peso insuficiente severo",
+        valorMinimo: 1,
+        valorMaximo: 16.0),
     Imc(
-        descripcion: "Normal",
+        descripcion: "moderatethinness",
         recomendaciones:
-            "IMC es entre 18.5 y 24.9, se encuentra dentro del rango de peso normal o saludable",
-        valorMinimo: 18.6,
-        valorMaximo: 25),
+            "IMC esta entre 16 - 17, se encuentra dentro del rango de peso insuficiente moderadamente",
+        valorMinimo: 16,
+        valorMaximo: 17.0),
     Imc(
-        descripcion: "Sobrepeso",
+        descripcion: "moderatethinness",
         recomendaciones:
-            "IMC es entre 25.0 y 29.9, se encuentra dentro del rango de sobrepeso",
+            "IMC esta entre 17 - 18.5, se encuentra dentro del rango de peso insuficiente levemente",
+        valorMinimo: 17,
+        valorMaximo: 18.6),
+    Imc(
+        descripcion: "normal",
+        recomendaciones:
+            "IMC es entre 18.5 - 25, se encuentra dentro del rango de peso normal o saludable",
+        valorMinimo: 18.5,
+        valorMaximo: 25.0),
+    Imc(
+        descripcion: "overweight",
+        recomendaciones:
+            "IMC es entre 25 - 30, se encuentra dentro del rango de sobrepeso",
         valorMinimo: 25,
-        valorMaximo: 30),
+        valorMaximo: 30.0),
     Imc(
-        descripcion: "Obesidad I",
+        descripcion: "obeseI",
         recomendaciones:
-            "IMC es 30.0 o superior, se encuentra dentro del rango de obesidad I",
+            "IMC es 30 - 35, se encuentra dentro del rango de Obesidad I",
         valorMinimo: 30.0,
         valorMaximo: 35.0),
     Imc(
-        descripcion: "Obesidad II",
+        descripcion: "obeseII",
         recomendaciones:
-            "IMC es 34.9 o superior, se encuentra dentro del rango de obesidad II",
+            "IMC es 35 - 40, se encuentra dentro del rango de obesidad II",
         valorMinimo: 35.0,
         valorMaximo: 40.0),
     Imc(
-        descripcion: "Obesidad III",
+        descripcion: "obeseIII",
         recomendaciones:
-            "IMC es 39.9 o superior, se encuentra dentro del rango de obesidad III",
-        valorMinimo: 39.9,
+            "IMC es 40 o superior, se encuentra dentro del rango de Obesidad III",
+        valorMinimo: 40,
         valorMaximo: 100),
   ];
   calcularIMC(double altura, double peso) {

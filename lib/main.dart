@@ -14,7 +14,7 @@ class CalculadorImcPage extends StatefulWidget {
 }
 
 class _CalculadorImcPage extends State<CalculadorImcPage> {
-  double altura = 100, peso = 31;
+  double altura = 100, peso = 31, resultado = 0;
 
   Calculadora calculadora = Calculadora();
 
@@ -54,7 +54,7 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
                   "$altura cm.",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 40,
+                    fontSize: 30,
                   ),
                 ),
                 SizedBox(
@@ -78,7 +78,7 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
                   "$peso kg.",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 40,
+                    fontSize: 30,
                   ),
                 ),
                 SizedBox(
@@ -100,6 +100,7 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
                         height: 48,
                         onPressed: () => setState(() {
                           calculadora.calcularIMC(altura, peso);
+                          resultado = calculadora.getResultado();
                         }),
                         child: Text(
                           "Calcular",
@@ -116,15 +117,46 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
               ],
             ),
             Expanded(
-              flex: 7,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(calculadora.getREcomendaciones()),
-                  ],
-                ),
+              flex: 8,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Image(
+                        image: AssetImage(calculadora.getDescripcion() != ""
+                                ? 'assets/images/${calculadora.getDescripcion()}.png'
+                                : 'assets/images/default.png' // path to a default image
+                            ),
+                        height: 200,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Wrap(
+                        children: [
+                          Text(
+                            calculadora.getResultado() > 0
+                                ? "Resulado: ${resultado.toStringAsFixed(2)}"
+                                : "",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            calculadora.getREcomendaciones(),
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+                ],
               ),
             ),
           ],
