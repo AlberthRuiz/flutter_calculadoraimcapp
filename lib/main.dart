@@ -14,7 +14,7 @@ class CalculadorImcPage extends StatefulWidget {
 }
 
 class _CalculadorImcPage extends State<CalculadorImcPage> {
-  double altura = 100, peso = 31, resultado = 0;
+  double altura = 130, peso = 31, resultado = 0;
 
   Calculadora calculadora = Calculadora();
 
@@ -60,8 +60,9 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
                   ),
                   SizedBox(
                     child: Slider(
-                      min: 100.0,
+                      min: 130.0,
                       max: 200.0,
+                      activeColor: Colors.blueAccent,
                       value: altura,
                       onChanged: (double value) => setState(() {
                         altura = double.parse(value.toStringAsFixed(2));
@@ -86,6 +87,7 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
                     child: Slider(
                       min: 29.0,
                       max: 200.0,
+                      activeColor: Colors.blueAccent,
                       value: peso,
                       onChanged: (double value) => setState(() {
                         peso = double.parse(value.toStringAsFixed(2));

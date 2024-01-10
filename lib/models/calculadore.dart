@@ -18,7 +18,7 @@ class Calculadora {
         valorMinimo: 16,
         valorMaximo: 17.0),
     Imc(
-        descripcion: "moderatethinness",
+        descripcion: "mildthinness",
         recomendaciones:
             "IMC esta entre 17 - 18.5, se encuentra dentro del rango de peso insuficiente levemente",
         valorMinimo: 17,
