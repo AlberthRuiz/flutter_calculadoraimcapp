@@ -1,3 +1,4 @@
+import 'package:calculadoraimcapp/models/calculadore.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,10 @@ class CalculadorImcPage extends StatefulWidget {
 }
 
 class _CalculadorImcPage extends State<CalculadorImcPage> {
-  double altura = 31, peso = 31;
+  double altura = 100, peso = 31;
+
+  Calculadora calculadora = Calculadora();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +39,9 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   "Altura:",
                   textAlign: TextAlign.center,
@@ -52,7 +59,7 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
                 ),
                 SizedBox(
                   child: Slider(
-                    min: 29.0,
+                    min: 100.0,
                     max: 200.0,
                     value: altura,
                     onChanged: (double value) => setState(() {
@@ -91,8 +98,16 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: MaterialButton(
                         height: 48,
-                        onPressed: () => setState(() {}),
-                        child: Text("Calcular"),
+                        onPressed: () => setState(() {
+                          calculadora.calcularIMC(altura, peso);
+                        }),
+                        child: Text(
+                          "Calcular",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white),
+                        ),
                         color: Colors.blueAccent,
                       ),
                     ),
@@ -101,10 +116,14 @@ class _CalculadorImcPage extends State<CalculadorImcPage> {
               ],
             ),
             Expanded(
-              flex: 6,
-              child: Center(
+              flex: 7,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
-                  children: [],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(calculadora.getREcomendaciones()),
+                  ],
                 ),
               ),
             ),
